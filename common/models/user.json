@@ -1,0 +1,24 @@
+{
+  "name": "user",
+  "base": "User",
+  "strict": true,
+  "properties": {
+    "customerId": {
+      "type": "string",
+      "required": false,
+      "index": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "signUp"
+    }
+  ],
+  "methods": []
+}
