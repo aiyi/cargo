@@ -1,0 +1,10 @@
+/node_modules/.bin
+/node_modules/compression
+/node_modules/errorhandler
+/node_modules/jshint
+/node_modules/loopback
+/node_modules/loopback-boot
+/node_modules/loopback-connector-mongodb
+/node_modules/loopback-datasource-juggler
+/node_modules/loopback-explorer
+/node_modules/serve-favicon
