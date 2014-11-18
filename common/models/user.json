@@ -3,6 +3,11 @@
   "base": "User",
   "strict": true,
   "properties": {
+    "username": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
     "customerId": {
       "type": "string",
       "required": false,
@@ -18,6 +23,20 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "signUp"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "signIn"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "signOut"
     }
   ],
   "methods": []

@@ -6,6 +6,6 @@
 /node_modules/loopback-boot
 /node_modules/loopback-connector-mongodb
 /node_modules/loopback-datasource-juggler
-/node_modules/loopback-explorer
+/node_modules/loopback-explorer/node_modules
 /node_modules/serve-favicon
 /.idea

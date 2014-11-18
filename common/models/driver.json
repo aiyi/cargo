@@ -1,0 +1,60 @@
+{
+  "name": "driver",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "credit": {
+      "type": "number",
+      "required": true
+    },
+    "idCard": {
+      "type": "string"
+    },
+    "vehicleLength": {
+      "type": "number",
+      "required": true
+    },
+    "license": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "route": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "drivingYears": {
+      "type": "number"
+    },
+    "company": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "lastUpdated": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

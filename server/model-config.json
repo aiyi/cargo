@@ -28,5 +28,9 @@
   "user": {
     "dataSource": "mongo",
     "public": true
+  },
+  "driver": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
