@@ -12,7 +12,7 @@
       "type": "string",
       "required": true
     },
-    "credit": {
+    "points": {
       "type": "number",
       "required": true
     },
@@ -20,7 +20,7 @@
       "type": "string"
     },
     "vehicleLength": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "license": {

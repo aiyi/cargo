@@ -27,7 +27,7 @@
       "type": "number"
     },
     "vehicleLength": {
-      "type": "number"
+      "type": "string"
     },
     "cargoType": {
       "type": "string",
