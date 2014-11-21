@@ -1,13 +1,12 @@
 {
   "name": "driver",
   "base": "PersistedModel",
-  "strict": false,
-  "idInjection": false,
+  "strict": true,
   "properties": {
-    "id": {
+    "driverId": {
       "type": "string",
-      "id": true,
-      "required": true
+      "required": true,
+      "index": {"unique": true}
     },
     "name": {
       "type": "string",

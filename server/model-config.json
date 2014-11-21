@@ -32,5 +32,13 @@
   "driver": {
     "dataSource": "mongo",
     "public": true
+  },
+  "cargo": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "checkin": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

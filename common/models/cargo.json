@@ -1,0 +1,69 @@
+{
+  "name": "cargo",
+  "base": "PersistedModel",
+  "strict": true,
+  "properties": {
+    "customerId": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "from": {
+      "type": "string",
+      "required": true
+    },
+    "to": {
+      "type": "string",
+      "required": true
+    },
+    "vehicleType": {
+      "type": "string"
+    },
+    "numVehicle": {
+      "type": "number"
+    },
+    "vehicleLength": {
+      "type": "number"
+    },
+    "cargoType": {
+      "type": "string",
+      "required": true
+    },
+    "cargoQuantity": {
+      "type": "string",
+      "required": true
+    },
+    "offer": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "priceUnit": {
+      "type": "string"
+    },
+    "remarks": {
+      "type": "string"
+    },
+    "valid": {
+      "type": "boolean",
+      "required": true
+    },
+    "pubDate": {
+      "type": "date",
+      "required": true
+    },
+    "expiryDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

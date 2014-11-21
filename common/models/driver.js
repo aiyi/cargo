@@ -5,6 +5,7 @@ module.exports = function(Driver) {
   Driver.disableRemoteMethod('updateAll', isStatic);
 
   Driver.beforeCreate = function(next, data) {
+    data.id = null;
     data.created = data.lastUpdated = new Date();
     next();
   };

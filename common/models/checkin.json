@@ -1,0 +1,35 @@
+{
+  "name": "checkin",
+  "base": "PersistedModel",
+  "strict": true,
+  "properties": {
+    "driverId": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "driverName": {
+      "type": "string",
+      "required": true
+    },
+    "rewardPoints": {
+      "type": "number",
+      "required": true
+    },
+    "totalPoints": {
+      "type": "number"
+    },
+    "checkinDate": {
+      "type": "date",
+      "required": true
+    },
+    "expiryDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
