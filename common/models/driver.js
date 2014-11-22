@@ -1,3 +1,5 @@
+var util = require('my-util');
+
 module.exports = function(Driver) {
   var isStatic = true;
   Driver.disableRemoteMethod('upsert', isStatic);
@@ -6,12 +8,12 @@ module.exports = function(Driver) {
 
   Driver.beforeCreate = function(next, data) {
     data.id = null;
-    data.created = data.lastUpdated = new Date();
+    data.created = data.lastUpdated = util.getUTCDate();
     next();
   };
 
   Driver.beforeUpdate = function(next, data) {
-    data.lastUpdated = new Date();
+    data.lastUpdated = util.getUTCDate();
     next();
   };
 };
