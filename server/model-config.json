@@ -40,5 +40,13 @@
   "checkin": {
     "dataSource": "mongo",
     "public": true
+  },
+  "customer": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "point": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

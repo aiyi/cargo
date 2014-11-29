@@ -1,26 +1,22 @@
 {
-  "name": "checkin",
+  "name": "customer",
   "base": "PersistedModel",
   "strict": true,
   "properties": {
-    "driverId": {
+    "customerId": {
       "type": "string",
       "required": true,
       "index": true
     },
-    "driverName": {
+    "realm": {
       "type": "string",
       "required": true
     },
-    "vehicleLength": {
-      "type": "number",
-      "required": true
-    },
-    "vehicleType": {
+    "password": {
       "type": "string",
       "required": true
     },
-    "route": {
+    "customerName": {
       "type": "string",
       "required": true
     },
@@ -28,17 +24,22 @@
       "type": "string",
       "required": true
     },
-    "plateNumber": {
-      "type": "string",
+    "address": {
+      "type": "string"
+    },
+    "points": {
+      "type": "number",
       "required": true
     },
-    "checkinDate": {
-      "type": "date",
+    "valid": {
+      "type": "boolean",
       "required": true
     },
-    "expiryDate": {
-      "type": "date",
-      "required": true
+    "created": {
+      "type": "date"
+    },
+    "lastUpdated": {
+      "type": "date"
     }
   },
   "validations": [],

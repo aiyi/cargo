@@ -1,3 +1,6 @@
+var app = require('../../server/server');
+var util = require('my-util');
+
 module.exports = function(Driver) {
   var isStatic = true;
   Driver.disableRemoteMethod('upsert', isStatic);
@@ -6,12 +9,70 @@ module.exports = function(Driver) {
 
   Driver.beforeCreate = function(next, data) {
     data.id = null;
-    data.created = data.lastUpdated = new Date();
-    next();
+    now = util.getUTCDate();
+    if (!data.created || isNaN(data.created)) {
+      data.created = now;
+    }
+    data.lastUpdated = now;
+    
+    var user = util.parseUserId(data.driverId);
+    if (!user) {
+      var err = new Error('driverId must specify realm: ' + data.driverId);
+      err.statusCode = 500;
+      err.name = 'SyntaxError';
+      return next(err);
+    }
+    data.realm = user.realm;
+    
+    Driver.findOne({where:{driverId: data.driverId}}, function(err, inst) {
+      if (err) return next(err);
+      if (inst) {
+        return next(new Error('driverId already exists'));
+      }
+      next();
+    });
   };
 
   Driver.beforeUpdate = function(next, data) {
-    data.lastUpdated = new Date();
+    data.lastUpdated = util.getUTCDate();
     next();
   };
+  
+  Driver.beforeRemote('*.updateAttributes', function(ctx, data, next) {
+    if (ctx.req.body.id != null) delete ctx.req.body.id;
+    if (ctx.req.body.driverId != null) delete ctx.req.body.driverId;
+    if (ctx.req.body.realm != null) delete ctx.req.body.realm;
+    next();
+  });
+  
+  Driver.afterSave = function(next) {
+  console.log(this);
+    var drv = this;
+    var User = app.models.user;
+    var data = {username: drv.driverId, password: drv.password, userType: 'driver', 
+               realm: drv.realm, created: drv.created, lastUpdated: drv.lastUpdated};
+    User.sync(User, data, drv.valid, function(err) {
+      if (err) console.log(err);
+      next();
+    });
+  };
+  
+  Driver.afterRemote("deleteById", function(ctx, next) {
+  console.log(ctx);
+  /*  var User = app.models.user;
+    User.sync(User, {username: this.driverId}, false, function(err) {
+      if (err) console.log(err);*/
+      next();
+   // });
+  });
+  
+  /*
+  Driver.afterDestroy = function(next) {
+  console.log(this);
+    var User = app.models.user;
+    User.sync(User, {username: this.driverId}, false, function(err) {
+      if (err) console.log(err);
+      next();
+    });
+  };*/
 };

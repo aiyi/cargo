@@ -8,42 +8,62 @@
       "required": true,
       "index": {"unique": true}
     },
-    "name": {
+    "realm": {
+      "type": "string"
+    },
+    "password": {
       "type": "string",
       "required": true
     },
-    "points": {
-      "type": "number",
+    "lastName": {
+      "type": "string",
       "required": true
     },
-    "idCard": {
+    "firstName": {
+      "type": "string"
+    },
+    "sex": {
       "type": "string"
     },
     "vehicleLength": {
+      "type": "number",
+      "required": true
+    },
+    "vehicleType": {
       "type": "string",
       "required": true
     },
-    "license": {
-      "type": "string"
-    },
-    "address": {
-      "type": "string"
-    },
     "route": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phoneNumber": {
       "type": "string",
       "required": true
     },
+    "plateNumber": {
+      "type": "string",
+      "required": true
+    },
+    "idCard": {
+      "type": "string"
+    },
     "drivingYears": {
       "type": "number"
+    },
+    "address": {
+      "type": "string"
     },
     "company": {
       "type": "string"
     },
-    "sex": {
-      "type": "string"
+    "points": {
+      "type": "number",
+      "required": true
+    },
+    "valid": {
+      "type": "boolean",
+      "required": true
     },
     "created": {
       "type": "date"

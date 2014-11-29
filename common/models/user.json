@@ -8,12 +8,12 @@
       "required": true,
       "index": true
     },
-    "customerId": {
+    "userType": {
       "type": "string",
-      "required": false,
-      "index": false
+      "required": true
     }
   },
+  "hidden": ["credentials", "challenges", "email", "emailVerified", "verificationToken", "status", "id"],
   "validations": [],
   "relations": {},
   "acls": [

@@ -1,0 +1,29 @@
+{
+  "name": "point",
+  "base": "PersistedModel",
+  "strict": true,
+  "properties": {
+    "userId": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "points": {
+      "type": "number",
+      "required": true
+    },
+    "balance": {
+      "type": "number"
+    },
+    "remark": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

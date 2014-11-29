@@ -9,8 +9,10 @@
       "index": true
     },
     "customerName": {
-      "type": "string",
-      "required": true
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
     },
     "from": {
       "type": "string",
@@ -20,22 +22,20 @@
       "type": "string",
       "required": true
     },
-    "vehicleType": {
-      "type": "string"
-    },
     "numVehicle": {
-      "type": "number"
+      "type": "string"
     },
     "vehicleLength": {
       "type": "string"
     },
+    "vehicleType": {
+      "type": "string"
+    },
     "cargoType": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "cargoQuantity": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "offer": {
       "type": "string"
@@ -49,17 +49,14 @@
     "remarks": {
       "type": "string"
     },
-    "valid": {
-      "type": "boolean",
-      "required": true
+    "publishDate": {
+      "type": "date"
     },
-    "pubDate": {
-      "type": "date",
-      "required": true
+    "period": {
+      "type": "number"
     },
     "expiryDate": {
-      "type": "date",
-      "required": true
+      "type": "date"
     }
   },
   "validations": [],
