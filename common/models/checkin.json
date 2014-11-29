@@ -33,12 +33,10 @@
       "required": true
     },
     "checkinDate": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "expiryDate": {
-      "type": "date",
-      "required": true
+      "type": "date"
     }
   },
   "validations": [],
