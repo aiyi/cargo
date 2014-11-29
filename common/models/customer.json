@@ -6,7 +6,7 @@
     "customerId": {
       "type": "string",
       "required": true,
-      "index": true
+      "index": {"unique": true}
     },
     "realm": {
       "type": "string",

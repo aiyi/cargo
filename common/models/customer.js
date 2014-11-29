@@ -13,11 +13,47 @@ module.exports = function(Customer) {
       data.created = now;
     }
     data.lastUpdated = now;
-    next();
+    
+    var user = util.parseUserId(data.customerId);
+    if (!user) {
+      var err = new Error('customerId must specify realm: ' + data.customerId);
+      err.statusCode = 500;
+      err.name = 'SyntaxError';
+      return next(err);
+    }
+    data.realm = user.realm;
+    
+    Customer.findOne({where:{customerId: data.customerId}}, function(err, inst) {
+      if (err) return next(err);
+      if (inst) {
+        return next(new Error('customerId already exists'));
+      }
+      next();
+    });
   };
 
   Customer.beforeUpdate = function(next, data) {
     data.lastUpdated = util.getUTCDate();
     next();
   };
+  
+  Customer.afterSave = function(next) {
+    var cust = this;
+    var User = app.models.user;
+    var data = {username: cust.customerId, password: cust.password, userType: 'customer', 
+               realm: cust.realm, created: cust.created, lastUpdated: cust.lastUpdated};
+    User.sync(User, data, cust.valid, function(err) {
+      if (err) console.log(err);
+      next();
+    });
+  };
+  
+  /*
+  Customer.afterDestroy = function(next) {
+    var User = app.models.user;
+    User.sync(User, {username: this.customerId}, false, function(err) {
+      if (err) console.log(err);
+      next();
+    });
+  };*/
 };
