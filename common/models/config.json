@@ -1,0 +1,21 @@
+{
+  "name": "config",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "data": {
+      "type": "object",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

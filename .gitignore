@@ -9,3 +9,6 @@
 /node_modules/loopback-explorer/node_modules
 /node_modules/serve-favicon
 /.idea
+/.c9revisions
+/.settings
+/nohup.out

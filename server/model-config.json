@@ -48,5 +48,9 @@
   "point": {
     "dataSource": "mongo",
     "public": true
+  },
+  "config": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
