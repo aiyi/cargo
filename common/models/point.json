@@ -6,20 +6,25 @@
     "userId": {
       "type": "string",
       "required": true,
-      "index": true
+      "index": true,
+      "description": "司机/商户编号"
     },
     "points": {
       "type": "number",
-      "required": true
+      "required": true,
+      "description": "新增积分"
     },
     "balance": {
-      "type": "number"
+      "type": "number",
+      "description": "总积分"
     },
     "remark": {
-      "type": "string"
+      "type": "string",
+      "description": "积分备注"
     },
     "date": {
-      "type": "date"
+      "type": "date",
+      "description": "积分时间"
     }
   },
   "validations": [],

@@ -6,39 +6,43 @@
     "driverId": {
       "type": "string",
       "required": true,
-      "index": true
+      "index": true,
+      "description": "司机编号"
     },
     "driverName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "司机名"
     },
-    "vehicleLength": {
-      "type": "number",
-      "required": true
-    },
-    "vehicleType": {
+    "vehicle": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "车型"
     },
     "route": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "行驶路线"
     },
     "phoneNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "联系电话"
     },
     "plateNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "车牌号"
     },
     "checkinDate": {
       "type": "date",
-      "required": true
+      "required": true,
+      "description": "签到时间"
     },
     "expiryDate": {
       "type": "date",
-      "required": true
+      "required": true,
+      "description": "签到过期时间"
     }
   },
   "validations": [],

@@ -6,57 +6,74 @@
     "customerId": {
       "type": "string",
       "required": true,
-      "index": true
+      "index": true,
+      "description": "商户编号"
     },
     "customerName": {
-      "type": "string"
+      "type": "string",
+      "description": "商户名称"
     },
     "phoneNumber": {
-      "type": "string"
+      "type": "string",
+      "description": "联系电话"
     },
     "from": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "起始地"
     },
     "to": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "目的地"
     },
     "numVehicle": {
-      "type": "string"
+      "type": "string",
+      "description": "需要车辆数量"
     },
     "vehicleLength": {
-      "type": "string"
+      "type": "string",
+      "description": "需要车长"
     },
     "vehicleType": {
-      "type": "string"
+      "type": "string",
+      "description": "需要车型"
     },
     "cargoType": {
-      "type": "string"
+      "type": "string",
+      "description": "货物名称"
     },
     "cargoQuantity": {
-      "type": "string"
+      "type": "string",
+      "description": "货物数量"
     },
     "offer": {
-      "type": "string"
+      "type": "string",
+      "description": "模糊运费"
     },
     "price": {
-      "type": "number"
+      "type": "number",
+      "description": "确切价格"
     },
     "priceUnit": {
-      "type": "string"
+      "type": "string",
+      "description": "价格单位"
     },
     "remarks": {
-      "type": "string"
+      "type": "string",
+      "description": "备注"
     },
     "publishDate": {
-      "type": "date"
+      "type": "date",
+      "description": "发布时间"
     },
     "period": {
-      "type": "number"
+      "type": "number",
+      "description": "有效小时数"
     },
     "expiryDate": {
-      "type": "date"
+      "type": "date",
+      "description": "到期时间"
     }
   },
   "validations": [],

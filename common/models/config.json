@@ -7,11 +7,8 @@
     "id": {
       "type": "string",
       "id": true,
-      "required": true
-    },
-    "data": {
-      "type": "object",
-      "required": true
+      "required": true,
+      "description": "配置名称"
     }
   },
   "validations": [],

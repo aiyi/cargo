@@ -1,3 +1,4 @@
+var app = require('../../server/server');
 var util = require('my-util');
 
 module.exports = function(Customer) {
@@ -28,7 +29,15 @@ module.exports = function(Customer) {
       if (inst) {
         return next(new Error('customerId already exists'));
       }
-      next();
+      
+      var Driver = app.models.driver;
+      Driver.findOne({where:{driverId: data.customerId}}, function(err, inst) {
+        if (err) return next(err);
+        if (inst) {
+          return next(new Error('customerId already exists'));
+        }
+        next();
+      });
     });
   };
 
@@ -36,6 +45,13 @@ module.exports = function(Customer) {
     data.lastUpdated = util.getUTCDate();
     next();
   };
+  
+  Customer.beforeRemote('*.updateAttributes', function(ctx, data, next) {
+    if (ctx.req.body.id != null) delete ctx.req.body.id;
+    if (ctx.req.body.customerId != null) delete ctx.req.body.customerId;
+    if (ctx.req.body.realm != null) delete ctx.req.body.realm;
+    next();
+  });
   
   Customer.afterSave = function(next) {
     var cust = this;

@@ -17,8 +17,6 @@ module.exports = function(User) {
   User.disableRemoteMethod('__updateById__accessTokens', false);
   User.disableRemoteMethod('__count__accessTokens', false);
   User.disableRemoteMethod('confirm', isStatic);
-  User.disableRemoteMethod('login', isStatic);
-  User.disableRemoteMethod('logout', isStatic);
   User.disableRemoteMethod('resetPassword', isStatic);
   User.disableRemoteMethod('updateAll', isStatic);
 
@@ -48,42 +46,4 @@ module.exports = function(User) {
       }
     });
   }
-
-  User.signIn = function(username, password, cb) {
-    User.login({username: username, password: password}, function(err, accessToken) {
-      if (err) return cb(err);
-      cb(null, accessToken);
-    });
-  }
-
-  User.remoteMethod('signIn', {
-      description: 'Login a user with username and password',
-      accepts: [
-        {arg: 'username', type: 'string', required: true},
-        {arg: 'password', type: 'string', required: true}
-      ],
-      returns: {arg: 'accessToken', type: 'object', root: true},
-      http: {verb: 'post'}
-  });
-
-  User.signOut = function(tokenID, cb) {
-    User.logout(tokenID, function(err) {
-      if (err) return cb(err);
-      cb(null);
-    });
-  }
-
-  User.remoteMethod('signOut', {
-      description: 'Logout a user with access token',
-      accepts: [
-        {arg: 'tokenID', type: 'string', required: true, http: function (ctx) {
-          var req = ctx && ctx.req;
-          var accessToken = req && req.accessToken;
-          var tokenID = accessToken && accessToken.id;
-          return tokenID;
-        }
-        }
-      ],
-      http: {verb: 'post'}
-  });
 };

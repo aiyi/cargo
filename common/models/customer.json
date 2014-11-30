@@ -6,40 +6,49 @@
     "customerId": {
       "type": "string",
       "required": true,
-      "index": {"unique": true}
+      "index": {"unique": true},
+      "description": "商户编号"
     },
     "realm": {
       "type": "string",
-      "required": true
+      "description": "系统代号"
     },
     "password": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "登录密码"
     },
     "customerName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "商户名称"
     },
     "phoneNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "联系电话"
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "description": "商户地址"
     },
     "points": {
       "type": "number",
-      "required": true
+      "required": true,
+      "description": "总积分"
     },
     "valid": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "description": "账号是否有效"
     },
     "created": {
-      "type": "date"
+      "type": "date",
+      "description": "账号创建时间"
     },
     "lastUpdated": {
-      "type": "date"
+      "type": "date",
+      "description": "账号修改时间"
     }
   },
   "validations": [],

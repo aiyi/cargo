@@ -29,7 +29,15 @@ module.exports = function(Driver) {
       if (inst) {
         return next(new Error('driverId already exists'));
       }
-      next();
+      
+      var Customer = app.models.customer;
+      Customer.findOne({where:{customerId: data.driverId}}, function(err, inst) {
+        if (err) return next(err);
+        if (inst) {
+          return next(new Error('driverId already exists'));
+        }
+        next();
+      });
     });
   };
 
@@ -46,7 +54,6 @@ module.exports = function(Driver) {
   });
   
   Driver.afterSave = function(next) {
-  console.log(this);
     var drv = this;
     var User = app.models.user;
     var data = {username: drv.driverId, password: drv.password, userType: 'driver', 

@@ -49,8 +49,7 @@ module.exports = function(Checkin) {
       plate = plate.substr(0, plate.length - 3);
       plate += '***';
       
-      var data = {driverId: driverId, driverName: name, 
-                  vehicleLength: driver.vehicleLength, vehicleType: driver.vehicleType, 
+      var data = {driverId: driverId, driverName: name, vehicle: driver.vehicle, 
                   route: driver.route, phoneNumber: driver.phoneNumber, 
                   plateNumber: plate, checkinDate: date, expiryDate: expDate};
       Checkin.create(data, function (err, checkin) {

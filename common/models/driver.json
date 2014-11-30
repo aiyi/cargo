@@ -6,70 +6,84 @@
     "driverId": {
       "type": "string",
       "required": true,
-      "index": {"unique": true}
+      "index": {"unique": true},
+      "description": "司机编号"
     },
     "realm": {
-      "type": "string"
+      "type": "string",
+      "description": "系统代号"
     },
     "password": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "密码"
     },
     "lastName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "姓"
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "description": "名"
     },
     "sex": {
-      "type": "string"
-    },
-    "vehicleLength": {
-      "type": "number",
-      "required": true
-    },
-    "vehicleType": {
       "type": "string",
-      "required": true
+      "description": "性别"
+    },
+    "vehicle": {
+      "type": "string",
+      "required": true,
+      "description": "车型"
     },
     "route": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "行驶路线"
     },
     "phoneNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "联系电话"
     },
     "plateNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "车牌号"
     },
     "idCard": {
-      "type": "string"
+      "type": "string",
+      "description": "身份证号"
     },
     "drivingYears": {
-      "type": "number"
+      "type": "number",
+      "description": "驾龄"
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "description": "地址"
     },
     "company": {
-      "type": "string"
+      "type": "string",
+      "description": "所属公司"
     },
     "points": {
       "type": "number",
-      "required": true
+      "required": true,
+      "description": "总积分"
     },
     "valid": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "description": "账号是否有效"
     },
     "created": {
-      "type": "date"
+      "type": "date",
+      "description": "账号创建时间"
     },
     "lastUpdated": {
-      "type": "date"
+      "type": "date",
+      "description": "账号修改时间"
     }
   },
   "validations": [],
