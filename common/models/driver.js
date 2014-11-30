@@ -9,7 +9,7 @@ module.exports = function(Driver) {
 
   Driver.beforeCreate = function(next, data) {
     data.id = null;
-    now = util.getUTCDate();
+    var now = util.getUTCDate();
     if (!data.created || isNaN(data.created)) {
       data.created = now;
     }
@@ -47,9 +47,9 @@ module.exports = function(Driver) {
   };
   
   Driver.beforeRemote('*.updateAttributes', function(ctx, data, next) {
-    if (ctx.req.body.id != null) delete ctx.req.body.id;
-    if (ctx.req.body.driverId != null) delete ctx.req.body.driverId;
-    if (ctx.req.body.realm != null) delete ctx.req.body.realm;
+    if (ctx.req.body.id !== null) delete ctx.req.body.id;
+    if (ctx.req.body.driverId !== null) delete ctx.req.body.driverId;
+    if (ctx.req.body.realm !== null) delete ctx.req.body.realm;
     next();
   });
   
@@ -59,27 +59,24 @@ module.exports = function(Driver) {
     var data = {username: drv.driverId, password: drv.password, userType: 'driver', 
                realm: drv.realm, created: drv.created, lastUpdated: drv.lastUpdated};
     User.sync(User, data, drv.valid, function(err) {
-      if (err) console.log(err);
+      if (err) return next(err);
       next();
     });
   };
   
-  Driver.afterRemote("deleteById", function(ctx, next) {
-  console.log(ctx);
-  /*  var User = app.models.user;
-    User.sync(User, {username: this.driverId}, false, function(err) {
-      if (err) console.log(err);*/
-      next();
-   // });
-  });
-  
-  /*
-  Driver.afterDestroy = function(next) {
-  console.log(this);
-    var User = app.models.user;
-    User.sync(User, {username: this.driverId}, false, function(err) {
-      if (err) console.log(err);
-      next();
+  Driver.beforeRemote('deleteById', function(ctx, unused, next) {
+    Driver.findById(ctx.args.id, function(err, inst) {
+      if (err) return next(err);
+      if (inst && inst.valid === true) {
+        var User = app.models.user;
+        var data = {username: inst.driverId, userType: 'driver'};
+        User.sync(User, data, false, function(err) {
+          if (err) return next(err);
+          next();
+        });
+      } else {
+        next();
+      }
     });
-  };*/
+  });
 };

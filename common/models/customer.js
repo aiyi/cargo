@@ -9,7 +9,7 @@ module.exports = function(Customer) {
 
   Customer.beforeCreate = function(next, data) {
     data.id = null;
-    now = util.getUTCDate();
+    var now = util.getUTCDate();
     if (!data.created || isNaN(data.created)) {
       data.created = now;
     }
@@ -47,9 +47,9 @@ module.exports = function(Customer) {
   };
   
   Customer.beforeRemote('*.updateAttributes', function(ctx, data, next) {
-    if (ctx.req.body.id != null) delete ctx.req.body.id;
-    if (ctx.req.body.customerId != null) delete ctx.req.body.customerId;
-    if (ctx.req.body.realm != null) delete ctx.req.body.realm;
+    if (ctx.req.body.id !== null) delete ctx.req.body.id;
+    if (ctx.req.body.customerId !== null) delete ctx.req.body.customerId;
+    if (ctx.req.body.realm !== null) delete ctx.req.body.realm;
     next();
   });
   
@@ -59,17 +59,24 @@ module.exports = function(Customer) {
     var data = {username: cust.customerId, password: cust.password, userType: 'customer', 
                realm: cust.realm, created: cust.created, lastUpdated: cust.lastUpdated};
     User.sync(User, data, cust.valid, function(err) {
-      if (err) console.log(err);
+      if (err) return next(err);
       next();
     });
   };
   
-  /*
-  Customer.afterDestroy = function(next) {
-    var User = app.models.user;
-    User.sync(User, {username: this.customerId}, false, function(err) {
-      if (err) console.log(err);
-      next();
+  Customer.beforeRemote('deleteById', function(ctx, unused, next) {
+    Customer.findById(ctx.args.id, function(err, inst) {
+      if (err) return next(err);
+      if (inst && inst.valid === true) {
+        var User = app.models.user;
+        var data = {username: inst.customerId, userType: 'customer'};
+        User.sync(User, data, false, function(err) {
+          if (err) return next(err);
+          next();
+        });
+      } else {
+        next();
+      }
     });
-  };*/
+  });
 };

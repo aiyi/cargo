@@ -21,7 +21,8 @@ module.exports = function(User) {
   User.disableRemoteMethod('updateAll', isStatic);
 
   User.sync = function(userModel, data, valid, cb) {
-    userModel.findOne({where: {username: data.username}}, function(err, user) {
+    userModel.findOne({where: {username: data.username, userType: data.userType}},
+      function(err, user) {
       if (err) return cb(err);
       if (user) {
         if (valid) {
@@ -42,6 +43,8 @@ module.exports = function(User) {
             if (err || !user) return cb(err);
             cb();
           });
+        } else {
+          cb();
         }
       }
     });

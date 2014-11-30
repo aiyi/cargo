@@ -29,16 +29,16 @@ module.exports = function(Point) {
         });
       } else {
         var Customer = app.models.customer;
-	    Customer.findOne({where: {customerId: data.userId}}, function(err, cust) {
-	      if (err) return next(err);
-	      if (!cust) {    
-	        err = new Error('User not found: ' + data.userId);
-	        err.statusCode = 404;
-	        return next(err);
-	      } 
-	    
-	      data.balance = cust.points + data.points;
-	      cust.updateAttributes({points: data.balance}, function(err, obj) {
+        Customer.findOne({where: {customerId: data.userId}}, function(err, cust) {
+          if (err) return next(err);
+          if (!cust) {
+            err = new Error('User not found: ' + data.userId);
+            err.statusCode = 404;
+            return next(err);
+          } 
+          
+          data.balance = cust.points + data.points;
+          cust.updateAttributes({points: data.balance}, function(err, obj) {
             if (err) return next(err);
             next();
           });
